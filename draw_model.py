@@ -83,7 +83,7 @@ class DrawModel(nn.Module):
         self.forward(x)
         criterion = nn.BCELoss()
         x_recons = self.sigmoid(self.cs[-1])
-        Lx = criterion(x_recons,x) * 100
+        Lx = criterion(x_recons,x) * self.A * self.B
         Lz = 0
         kl_terms = [0] * T
         for t in xrange(self.T):
