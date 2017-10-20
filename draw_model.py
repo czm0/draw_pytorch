@@ -106,7 +106,7 @@ class DrawModel(nn.Module):
         temp,t_sigma = align(temp,sigma2)
         temp = temp / (t_sigma * 2)
         F = torch.exp(-torch.pow(temp,2))
-        F = F / (F.sum(2).expand_as(F) + epsilon)
+        F = F / (F.sum(2,True).expand_as(F) + epsilon)
         return F
 
     #correct
